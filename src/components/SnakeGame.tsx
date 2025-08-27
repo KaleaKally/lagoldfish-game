@@ -26,7 +26,7 @@ const SnakeGame = ({ onWin, onBack, targetScore = 100 }: SnakeGameProps) => {
   const [speed, setSpeed] = useState(INITIAL_SPEED);
   const [countdown, setCountdown] = useState<number | null>(3); // Countdown state
   
-  const gameLoopRef = useRef<NodeJS.Timeout>();
+  const gameLoopRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const directionRef = useRef<Direction>(direction);
 
   // Remove emojis for Nokia style - just use a simple square for food

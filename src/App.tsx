@@ -3,8 +3,6 @@ import './App.css'
 import PowerOffScreen from './components/PowerOffScreen'
 import BootSequence from './components/BootSequence'
 import MemphisPartyScreen from './components/MemphisPartyScreen'
-import Windows95Desktop from './components/Windows95Desktop'
-import DialUpConnection from './components/DialUpConnection'
 import SnakeGame from './components/SnakeGame'
 import VoucherReveal from './components/VoucherReveal'
 

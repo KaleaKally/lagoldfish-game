@@ -7,7 +7,7 @@ interface VoucherRevealProps {
   birthdayName?: string;
 }
 
-const VoucherReveal = ({ voucher1, voucher2, birthdayName = "Friend" }: VoucherRevealProps) => {
+const VoucherReveal = ({ birthdayName = "Friend" }: VoucherRevealProps) => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [revealed, setRevealed] = useState(false);
 
@@ -101,7 +101,7 @@ const VoucherReveal = ({ voucher1, voucher2, birthdayName = "Friend" }: VoucherR
         </div>
         
         <div className="retro-decoration">
-          <marquee>★ ☆ ★ BUON COMPLEANNO! ★ ☆ ★ COOKING TIME AT TEATRO7! ★ ☆ ★</marquee>
+          <div className="marquee-text">★ ☆ ★ BUON COMPLEANNO! ★ ☆ ★ COOKING TIME AT TEATRO7! ★ ☆ ★</div>
         </div>
       </div>
     </div>
