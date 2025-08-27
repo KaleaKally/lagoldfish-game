@@ -847,59 +847,46 @@
   .goldfish-7 { top: 60%; }
   .goldfish-8 { top: 5%; }
   
-  /* Make seaweed visible on mobile */
+  /* Make seaweed visible and properly positioned on mobile */
   .css-seaweed {
-    height: 60px;
     z-index: 1;
+    transform-origin: bottom center;
   }
   
   .seaweed-1 { 
-    left: 5%;
+    left: 2%;
+    width: 15px;
     height: 50px;
   }
   .seaweed-2 { 
-    left: 20%;
-    height: 70px;
+    left: 15%;
+    width: 18px;
+    height: 60px;
   }
   .seaweed-3 { 
-    left: 40%;
+    left: 30%;
+    width: 14px;
     height: 45px;
   }
   .seaweed-4 { 
-    left: 60%;
+    left: 45%;
+    width: 16px;
     height: 55px;
   }
   .seaweed-5 { 
-    left: 75%;
-    height: 65px;
+    left: 60%;
+    width: 15px;
+    height: 50px;
   }
   .seaweed-6 { 
-    left: 85%;
-    height: 50px;
+    left: 75%;
+    width: 17px;
+    height: 45px;
   }
   .seaweed-7 { 
-    left: 92%;
-    height: 60px;
-  }
-  
-  /* Smaller seaweed on mobile */
-  .css-seaweed {
-    transform: scale(0.6);
-  }
-  
-  .seaweed-1 {
-    left: 5%;
-    height: 60px;
-  }
-  
-  .seaweed-2 {
-    left: 50%;
-    height: 70px;
-  }
-  
-  .seaweed-3 {
-    left: 90%;
-    height: 50px;
+    left: 88%;
+    width: 15px;
+    height: 55px;
   }
   
   /* Smaller bubbles on mobile */
@@ -921,6 +908,19 @@
     min-height: auto;
     border-radius: 15px;
   }
+  
+  /* Ensure seaweed is visible on small phones */
+  .css-seaweed {
+    opacity: 0.8;
+  }
+  
+  .seaweed-1 { left: 1%; width: 12px; height: 40px; }
+  .seaweed-2 { left: 14%; width: 14px; height: 50px; }
+  .seaweed-3 { left: 28%; width: 11px; height: 35px; }
+  .seaweed-4 { left: 42%; width: 13px; height: 45px; }
+  .seaweed-5 { left: 57%; width: 12px; height: 40px; }
+  .seaweed-6 { left: 72%; width: 14px; height: 38px; }
+  .seaweed-7 { left: 86%; width: 12px; height: 45px; }
   
   .goldfish-title {
     font-size: 20px;
