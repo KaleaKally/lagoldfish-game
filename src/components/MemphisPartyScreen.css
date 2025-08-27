@@ -1,0 +1,317 @@
+/* Memphis content wrapper */
+.memphis-content-wrapper {
+  position: absolute;
+  top: 15vh; /* Moved higher up */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  z-index: 10; /* Ensure content is above background */
+}
+
+/* Memphis Party Screen specific adjustments */
+.start-screen-90s .title-container-90s {
+  position: relative !important;
+  z-index: 50 !important;
+}
+
+.start-screen-90s .subtitle-90s {
+  position: relative !important;
+  z-index: 50 !important;
+}
+
+.start-screen-90s .power-button-90s {
+  position: relative !important;
+  z-index: 50 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+/* Windows 95 Start Button - 90s Website Style */
+.win95-start-button {
+  background: #c0c0c0;
+  border: 4px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  padding: 18px 35px;
+  font-family: 'Arial Black', 'Tahoma', 'MS Sans Serif', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 
+    4px 4px 0 #000,
+    inset 2px 2px 0 #dfdfdf,
+    inset -2px -2px 0 #808080;
+  transition: all 0.1s;
+  position: relative !important;
+  z-index: 50 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.win95-start-button:hover {
+  background: #d0d0d0;
+  transform: translate(-1px, -1px);
+  box-shadow: 
+    5px 5px 0 #000,
+    inset 2px 2px 0 #dfdfdf,
+    inset -2px -2px 0 #808080;
+}
+
+.win95-start-button:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+  box-shadow: 
+    2px 2px 0 #000,
+    inset 3px 3px 3px rgba(0, 0, 0, 0.3);
+  transform: translate(2px, 2px);
+}
+
+/* Button WordArt text - overrides for button context */
+.button-wordart-text {
+  font-size: 20px !important;
+  margin: 0 !important;
+  filter: drop-shadow(1px 1px 0 #000) !important;
+}
+
+/* Windows 95 Flag for button */
+.win95-flag-small {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  width: 24px;
+  height: 24px;
+  transform: perspective(50px) rotateY(-10deg);
+}
+
+.flag-square-small {
+  width: 11px;
+  height: 11px;
+}
+
+.flag-square-small.flag-red { background: #ff0000; }
+.flag-square-small.flag-green { background: #00ff00; }
+.flag-square-small.flag-blue { background: #0000ff; }
+.flag-square-small.flag-yellow { background: #ffff00; }
+
+/* Memphis Style Icons */
+.memphis-icon {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  z-index: 1;
+  filter: drop-shadow(4px 4px 0 #000);
+}
+
+.memphis-icon-small {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  z-index: 1;
+  filter: drop-shadow(3px 3px 0 #000);
+}
+
+/* Simple Memphis animations */
+.rotate-slow {
+  animation: rotate-gentle 8s linear infinite;
+}
+
+@keyframes rotate-gentle {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.wiggle {
+  animation: wiggle-memphis 3s ease-in-out infinite;
+}
+
+@keyframes wiggle-memphis {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.bounce-gentle {
+  animation: bounce-memphis 2s ease-in-out infinite;
+}
+
+@keyframes bounce-memphis {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.pulse {
+  animation: pulse-memphis 2s ease-in-out infinite;
+}
+
+@keyframes pulse-memphis {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Memphis geometric shapes */
+.memphis-triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 50px solid #00CED1;
+  transform: rotate(15deg);
+  z-index: 1;
+}
+
+.memphis-circle {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  border: 8px solid #FFD700;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.memphis-square {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #FF69B4;
+  transform: rotate(45deg);
+  z-index: 1;
+  opacity: 0.7;
+}
+
+.memphis-zigzag {
+  position: absolute;
+  width: 100px;
+  height: 20px;
+  background: linear-gradient(
+    45deg,
+    #00FA9A 25%,
+    transparent 25%,
+    transparent 50%,
+    #00FA9A 50%,
+    #00FA9A 75%,
+    transparent 75%
+  );
+  background-size: 20px 20px;
+  z-index: 1;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  /* Content wrapper adjustments - moved higher */
+  .memphis-content-wrapper {
+    top: 25vh;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 350px;
+    gap: 20px; /* Add spacing between flex items */
+  }
+  
+  /* Icon sizes - BIGGER */
+  .memphis-icon {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  
+  .memphis-icon-small {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  
+  /* Geometric shapes */
+  .memphis-triangle {
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid #00CED1;
+  }
+  
+  .memphis-circle {
+    width: 40px;
+    height: 40px;
+    border-width: 5px;
+  }
+  
+  .memphis-square {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .memphis-zigzag {
+    width: 60px;
+    height: 18px;
+  }
+  
+  /* Windows button for mobile */
+  .win95-start-button {
+    padding: 14px 25px;
+    gap: 10px;
+  }
+  
+  .win95-start-button .button-text {
+    font-size: 16px;
+  }
+  
+  .button-wordart-text {
+    font-size: 16px !important;
+  }
+  
+  .win95-flag-small {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .flag-square-small {
+    width: 9px;
+    height: 9px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  /* Content wrapper - keep it high */
+  .memphis-content-wrapper {
+    top: 20vh; /* Move even higher on small phones */
+    gap: 15px; /* Add spacing for very small screens */
+  }
+  
+  .title-container-90s {
+    padding: 15px 20px;
+  }
+  
+  .title-90s {
+    font-size: 28px;
+    line-height: 0.95;
+  }
+  
+  .subtitle-90s {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  
+  .win95-start-button {
+    padding: 12px 20px;
+  }
+  
+  .button-wordart-text {
+    font-size: 14px !important;
+  }
+  
+  /* Keep PNG icons bigger on small screens too */
+  .memphis-icon {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  
+  .memphis-icon-small {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}

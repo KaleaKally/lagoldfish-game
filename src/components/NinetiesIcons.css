@@ -1,0 +1,289 @@
+/* VHS Tape */
+.vhs-tape {
+  width: 80px;
+  height: 50px;
+  background: #1a1a1a;
+  border: 2px solid #000;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+}
+
+.vhs-tape::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  height: 20px;
+  background: linear-gradient(90deg, #888 30%, #666 30%, #666 70%, #888 70%);
+  border: 1px solid #000;
+}
+
+.vhs-tape::after {
+  content: 'VHS';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 8px;
+  font-weight: bold;
+}
+
+/* Floppy Disk */
+.floppy-disk {
+  width: 60px;
+  height: 60px;
+  background: #2a2a2a;
+  border: 2px solid #000;
+  position: relative;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+}
+
+.floppy-disk::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 25px;
+  background: #888;
+  border: 1px solid #000;
+}
+
+.floppy-disk::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+  width: 15px;
+  height: 15px;
+  background: #ddd;
+  border: 1px solid #000;
+}
+
+/* CD Disc */
+.cd-disc {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #c0c0c0, #f0f0f0, #c0c0c0);
+  border-radius: 50%;
+  border: 2px solid #000;
+  position: relative;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.cd-disc::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background: #333;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+.cd-disc::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    transparent 30%, 
+    rgba(255,255,255,0.3) 50%, 
+    transparent 70%);
+  animation: cd-shine 3s infinite;
+}
+
+@keyframes cd-shine {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Game Controller */
+.game-controller {
+  width: 80px;
+  height: 50px;
+  background: #4a4a4a;
+  border: 2px solid #000;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+}
+
+.game-controller::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  width: 15px;
+  height: 15px;
+  background: #222;
+  border: 1px solid #000;
+  box-shadow: 
+    20px 0 0 #222,
+    20px 0 0 1px #000;
+}
+
+.game-controller::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  background: repeating-conic-gradient(#f00 0 90deg, #00f 90deg 180deg, #ff0 180deg 270deg, #0f0 270deg);
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+
+/* Boombox */
+.boombox {
+  width: 90px;
+  height: 60px;
+  background: #808080;
+  border: 3px solid #000;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+}
+
+.boombox::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 25px;
+  height: 25px;
+  background: radial-gradient(circle, #333 30%, #666 30%, #666 60%, #999 60%);
+  border-radius: 50%;
+  border: 2px solid #000;
+  box-shadow: 45px 0 0 0 #333, 45px 0 0 2px #000;
+}
+
+.boombox::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 8px;
+  background: #222;
+  border: 1px solid #000;
+}
+
+/* CRT TV */
+.crt-tv {
+  width: 70px;
+  height: 60px;
+  background: #3a3a3a;
+  border: 3px solid #000;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+}
+
+.crt-tv::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  height: 35px;
+  background: linear-gradient(180deg, #001122 0%, #003366 100%);
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+.crt-tv::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  background: #ff0000;
+  border-radius: 50%;
+  box-shadow: -12px 0 0 #00ff00;
+}
+
+/* Cassette Tape */
+.cassette {
+  width: 70px;
+  height: 45px;
+  background: #f0f0f0;
+  border: 2px solid #000;
+  border-radius: 3px;
+  position: relative;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+}
+
+.cassette::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 18px;
+  height: 18px;
+  background: #333;
+  border-radius: 50%;
+  border: 2px solid #000;
+  box-shadow: 
+    28px 0 0 0 #333,
+    28px 0 0 2px #000;
+}
+
+.cassette::after {
+  content: 'MIX';
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Tamagotchi */
+.tamagotchi {
+  width: 50px;
+  height: 65px;
+  background: #ff69b4;
+  border: 3px solid #000;
+  border-radius: 25px 25px 30px 30px;
+  position: relative;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+}
+
+.tamagotchi::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 25px;
+  background: #9acd32;
+  border: 2px solid #000;
+  border-radius: 3px;
+}
+
+.tamagotchi::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 6px;
+  background: repeating-linear-gradient(90deg, #000 0 4px, transparent 4px 6px);
+}

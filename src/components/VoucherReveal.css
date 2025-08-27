@@ -1,0 +1,355 @@
+/* Voucher Reveal Container - Food Theme */
+.voucher-reveal {
+  height: 100vh;
+  background: #fef5e7;
+  background-image:
+    /* Pizza slices */
+    radial-gradient(circle at 15% 20%, #ff6b6b 8px, transparent 8px),
+    radial-gradient(circle at 18% 18%, #ffd93d 6px, transparent 6px),
+    /* Pasta swirls */
+    radial-gradient(ellipse at 75% 25%, #f4a460 10px, transparent 10px),
+    radial-gradient(ellipse at 77% 23%, #d2691e 5px, transparent 5px),
+    /* Wine glasses */
+    radial-gradient(circle at 85% 75%, #722f37 6px, transparent 6px),
+    radial-gradient(circle at 87% 73%, #8b0000 4px, transparent 4px),
+    /* Chef hats */
+    radial-gradient(ellipse at 20% 80%, white 12px, transparent 12px),
+    radial-gradient(ellipse at 23% 78%, #f5f5f5 8px, transparent 8px),
+    /* Tomatoes */
+    radial-gradient(circle at 50% 15%, #ff6347 7px, transparent 7px),
+    radial-gradient(circle at 48% 13%, #ff4500 5px, transparent 5px),
+    /* Olive oil bottles */
+    radial-gradient(ellipse at 35% 50%, #808000 5px, transparent 5px),
+    radial-gradient(ellipse at 37% 48%, #6b8e23 7px, transparent 7px),
+    /* Basil leaves */
+    radial-gradient(ellipse at 65% 60%, #228b22 6px, transparent 6px),
+    radial-gradient(ellipse at 67% 58%, #2e7d32 4px, transparent 4px),
+    /* Bread loaves */
+    radial-gradient(ellipse at 10% 45%, #d4a574 14px, transparent 14px),
+    radial-gradient(ellipse at 13% 43%, #c19a6b 9px, transparent 9px),
+    /* Cheese wheels */
+    radial-gradient(circle at 90% 40%, #ffd700 10px, transparent 10px),
+    radial-gradient(circle at 92% 38%, #ffcc00 7px, transparent 7px);
+  background-size: 
+    200px 200px, 200px 200px,
+    180px 180px, 180px 180px,
+    220px 220px, 220px 220px,
+    190px 190px, 190px 190px,
+    170px 170px, 170px 170px,
+    160px 160px, 160px 160px,
+    140px 140px, 140px 140px,
+    210px 210px, 210px 210px,
+    150px 150px, 150px 150px;
+  background-position:
+    0 0, 10px 10px,
+    50px 50px, 60px 60px,
+    -20px -20px, -10px -10px,
+    30px 30px, 40px 40px,
+    -30px -30px, -20px -20px,
+    70px 70px, 80px 80px,
+    -40px -40px, -30px -30px,
+    90px 90px, 100px 100px,
+    -50px -50px, -40px -40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Confetti */
+.confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: fall linear;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(calc(100vh + 10px)) rotate(360deg);
+  }
+}
+
+/* Reveal Content */
+.reveal-content {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 12px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 96vh;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 1s ease-out;
+  position: relative;
+  z-index: 5;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.reveal-content.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Birthday Title */
+.birthday-title {
+  text-align: center;
+  font-size: 22px;
+  color: #764ba2;
+  margin: 8px 0 10px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  animation: rainbow 3s linear infinite;
+}
+
+@keyframes rainbow {
+  0% { color: #ff6347; }     /* Tomato red */
+  16% { color: #d4a574; }    /* Bread/wheat brown */
+  33% { color: #ffd700; }    /* Cheese golden */
+  50% { color: #228b22; }    /* Basil green */
+  66% { color: #722f37; }    /* Wine burgundy */
+  83% { color: #8b4513; }    /* Saddle brown */
+  100% { color: #ff6347; }   /* Back to tomato red */
+}
+
+/* Teatro7 Container */
+.teatro7-container {
+  text-align: center;
+  margin: 10px 0;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.teatro7-logo {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 8px;
+  background: white;
+}
+
+.corso-title {
+  font-size: 18px;
+  color: #764ba2;
+  font-weight: bold;
+  margin: 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Vouchers Container */
+.vouchers-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  margin-bottom: 25px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Voucher Card - Food theme colors with green */
+.voucher-card {
+  background: linear-gradient(135deg, #228b22 0%, #2e7d32 100%);
+  border-radius: 15px;
+  padding: 3px;
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Single Voucher - Full Width */
+.voucher-card.single-voucher {
+  max-width: 450px;
+  margin: 0 auto;
+  height: fit-content;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(34, 139, 34, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(46, 125, 50, 0.8);
+  }
+}
+
+.voucher-header {
+  background: white;
+  border-radius: 12px 12px 0 0;
+  padding: 8px;
+  text-align: center;
+}
+
+.voucher-icon {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.voucher-header h3 {
+  margin: 0;
+  color: #228b22;
+  font-size: 16px;
+}
+
+.voucher-content {
+  background: white;
+  border-radius: 0 0 12px 12px;
+  padding: 10px;
+  text-align: center;
+}
+
+.voucher-text {
+  font-size: 16px;
+  color: #333;
+  margin: 15px 0;
+  font-weight: bold;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Voucher Main Text */
+.voucher-main-text {
+  font-size: 16px;
+  color: #228b22;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Voucher Info Section */
+.voucher-info {
+  margin: 8px 0;
+  text-align: left;
+}
+
+.voucher-description {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.voucher-options {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.voucher-list {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+}
+
+.voucher-list li {
+  padding: 4px 0;
+  font-size: 12px;
+  color: #333;
+  border-left: 2px solid #228b22;
+  padding-left: 10px;
+  margin-bottom: 4px;
+}
+
+.voucher-details {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #ddd;
+}
+
+.voucher-details p {
+  margin: 4px 0;
+  font-size: 12px;
+  color: #666;
+}
+
+/* Celebration Message - moved before vouchers */
+.celebration-message {
+  text-align: center;
+  margin: 5px 0 8px 0;
+  padding: 8px;
+  background: rgba(118, 75, 162, 0.05);
+  border-radius: 10px;
+}
+
+.surprise-text {
+  font-size: 18px;
+  color: #764ba2;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.celebration-message p {
+  font-size: 14px;
+  color: #333;
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+/* Retro Decoration */
+.retro-decoration {
+  margin-top: 5px;
+  padding: 5px;
+  background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #8800ff);
+  border-radius: 10px;
+}
+
+.retro-decoration marquee {
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .birthday-title {
+    font-size: 18px;
+    margin: 8px 0;
+  }
+  
+  .reveal-content {
+    padding: 10px;
+    max-height: 95vh;
+  }
+  
+  .teatro7-logo {
+    max-width: 160px;
+  }
+  
+  .corso-title {
+    font-size: 16px;
+  }
+  
+  .celebration-message p {
+    font-size: 13px;
+  }
+  
+  .voucher-main-text {
+    font-size: 14px;
+  }
+  
+  .voucher-list li {
+    font-size: 11px;
+  }
+  
+  .voucher-details p {
+    font-size: 11px;
+  }
+}

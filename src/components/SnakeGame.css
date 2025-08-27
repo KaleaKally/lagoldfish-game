@@ -1,0 +1,385 @@
+/* Import pixel font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Windows 95 Style Snake Game */
+.snake-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #008080; /* Windows 95 teal */
+  padding: 20px;
+  position: relative;
+}
+
+/* Back Arrow Button - Top Left */
+.back-arrow-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background: #c0c0c0;
+  border: 3px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 
+    inset -1px -1px 0 #000,
+    inset 1px 1px 0 #dfdfdf;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+  z-index: 10;
+}
+
+.back-arrow-btn:hover {
+  background: #d0d0d0;
+}
+
+.back-arrow-btn:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+  box-shadow: 
+    inset 1px 1px 0 #000,
+    inset -1px -1px 0 #dfdfdf;
+  transform: translateY(1px);
+}
+
+/* Game Window - Windows 95 style */
+.game-window {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 
+    inset -1px -1px 0 #000,
+    inset 1px 1px 0 #dfdfdf;
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Title Bar */
+.window-title {
+  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+  color: white;
+  padding: 3px 5px;
+  font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.window-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.window-btn {
+  width: 16px;
+  height: 14px;
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  font-size: 10px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Game Content */
+.game-content {
+  padding: 8px;
+  background: #c0c0c0;
+}
+
+/* Score Display */
+.score-bar {
+  background: #808080;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  padding: 4px 8px;
+  margin-bottom: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Game Board */
+.game-board {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background: #000000;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  margin: 0 auto 8px auto;
+  overflow: hidden; /* Prevent content from going outside */
+}
+
+.cell {
+  position: absolute;
+  background: transparent;
+  border: none;
+}
+
+/* Snake styling */
+.snake-head {
+  background: #00ff00 !important;
+  box-sizing: border-box;
+  border: 1px solid #00cc00;
+  box-shadow: inset 1px 1px 0 #80ff80;
+}
+
+.snake-body {
+  background: #00cc00 !important;
+  box-sizing: border-box;
+  border: 1px solid #00aa00;
+}
+
+/* Food */
+.cell.food {
+  background: #ffff00 !important;
+  box-sizing: border-box;
+  border: 1px solid #cccc00;
+  box-shadow: inset 1px 1px 0 #ffffcc;
+}
+
+/* Countdown Overlay */
+.countdown-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid #00ff00;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 0, 0.5),
+    inset 0 0 20px rgba(0, 255, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 100;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.countdown-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.game-rules {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 8px;
+  color: #00ff00;
+  text-shadow: 1px 1px 0 #004400;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.game-rules h3 {
+  font-size: 10px;
+  margin-bottom: 10px;
+  color: #ffff00;
+  text-shadow: 2px 2px 0 #666600;
+}
+
+.countdown-number {
+  font-size: 48px;
+  font-weight: bold;
+  color: #00ff00;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  text-shadow: 3px 3px 0 #004400;
+  animation: countdown-pulse 1s ease-in-out;
+}
+
+@keyframes countdown-pulse {
+  0% { transform: scale(0.5); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Control Buttons - Windows 95 style */
+.controls-container {
+  padding: 8px;
+  background: #c0c0c0;
+  border-top: 1px solid #808080;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.controls-grid {
+  display: grid;
+  grid-template-areas:
+    ". up ."
+    "left pause right"
+    ". down .";
+  gap: 4px;
+  max-width: 150px;
+  margin: 0 auto;
+}
+
+.control-btn {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 
+    inset -1px -1px 0 #000,
+    inset 1px 1px 0 #dfdfdf;
+  width: 40px;
+  height: 40px;
+  font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.control-btn:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+  box-shadow: 
+    inset 1px 1px 0 #000,
+    inset -1px -1px 0 #dfdfdf;
+}
+
+.control-btn.up { grid-area: up; }
+.control-btn.down { grid-area: down; }
+.control-btn.left { grid-area: left; }
+.control-btn.right { grid-area: right; }
+.control-btn.pause { 
+  grid-area: pause;
+  font-size: 10px;
+}
+
+/* Game Over/Win Overlay */
+.game-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid #00ff00;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 0, 0.5),
+    inset 0 0 20px rgba(0, 255, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1000;
+}
+
+.game-overlay h2 {
+  color: #00ff00;
+  margin: 0 0 20px 0;
+  padding: 0;
+  font-size: 18px;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  text-shadow: 2px 2px 0 #004400;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.game-overlay p {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 10px;
+  margin: 10px 0;
+  color: #00ff00;
+  text-shadow: 1px 1px 0 #004400;
+}
+
+.retry-btn {
+  background: #000000;
+  border: 3px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  padding: 10px 20px;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 12px;
+  color: #00ff00;
+  cursor: pointer;
+  margin-top: 20px;
+  text-transform: uppercase;
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(0, 255, 0, 0.8); }
+}
+
+.retry-btn:hover {
+  background: #00ff00;
+  color: #000000;
+  text-shadow: none;
+}
+
+.retry-btn:active {
+  transform: scale(0.95);
+}
+
+/* Remove old Nokia styles */
+.nokia-3310 {
+  /* Reset Nokia specific styles */
+}
+
+.nokia-phone,
+.nokia-screen,
+.nokia-buttons,
+.nokia-status-bar {
+  /* Remove Nokia elements */
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .game-board {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .control-btn {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Desktop - show keyboard hint */
+@media (min-width: 769px) {
+  .controls-container {
+    opacity: 0.7;
+  }
+  
+  .controls-container::after {
+    content: 'Use arrow keys • Space to pause';
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 10px;
+    color: #808080;
+  }
+}

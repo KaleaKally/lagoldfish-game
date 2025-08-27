@@ -1,0 +1,246 @@
+/* Classic Microsoft WordArt Styles */
+
+/* Rainbow Arch WordArt */
+.wordart-rainbow {
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(
+    180deg,
+    #ff0000 0%,
+    #ff7f00 16%,
+    #ffff00 33%,
+    #00ff00 50%,
+    #0000ff 66%,
+    #4b0082 83%,
+    #9400d3 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.8));
+  transform: perspective(300px) rotateX(-20deg);
+  letter-spacing: -3px;
+  line-height: 0.8;
+  margin: 20px 0;
+}
+
+/* Purple Gradient with 3D effect */
+.wordart-purple-3d {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 60px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #ff00ff;
+  text-shadow: 
+    1px 1px 0 #d400d4,
+    2px 2px 0 #aa00aa,
+    3px 3px 0 #800080,
+    4px 4px 0 #550055,
+    5px 5px 0 #2a002a,
+    6px 6px 8px rgba(0,0,0,0.5);
+  transform: perspective(500px) rotateY(-5deg) rotateX(-10deg);
+  letter-spacing: 2px;
+}
+
+/* Classic Blue Metallic */
+.wordart-metallic {
+  font-family: 'Times New Roman', serif;
+  font-size: 56px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(
+    0deg,
+    #000428 0%,
+    #004e92 25%,
+    #1e90ff 50%,
+    #87ceeb 75%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: 
+    drop-shadow(1px 1px 0 #000)
+    drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
+  letter-spacing: 3px;
+}
+
+/* Yellow Outline Style */
+.wordart-outline {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #ffff00;
+  text-shadow: 
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000,
+    4px 4px 6px rgba(0,0,0,0.5);
+  transform: perspective(400px) rotateX(-15deg);
+  letter-spacing: 4px;
+}
+
+/* Green Shiny Style */
+.wordart-shiny {
+  font-family: 'Impact', sans-serif;
+  font-size: 52px;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(
+    135deg,
+    #00ff00 0%,
+    #90ff90 45%,
+    #ffffff 50%,
+    #90ff90 55%,
+    #00ff00 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.7));
+  animation: shine-move 3s ease-in-out infinite;
+}
+
+@keyframes shine-move {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Wave Text Effect */
+.wordart-wave {
+  font-family: 'Comic Sans MS', 'Arial', sans-serif;
+  font-size: 44px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(
+    90deg,
+    #ff1493 0%,
+    #00bfff 25%,
+    #ffd700 50%,
+    #00ff00 75%,
+    #ff1493 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: wave-animation 3s linear infinite;
+  filter: drop-shadow(2px 2px 0 #000);
+}
+
+@keyframes wave-animation {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* For "Birthday Arcade" - Rainbow Arch */
+.wordart-title {
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 0.9;
+  margin: 30px 0;
+  background: linear-gradient(
+    180deg,
+    #ff0000 0%,
+    #ff7f00 14%,
+    #ffff00 28%,
+    #00ff00 42%,
+    #00ffff 56%,
+    #0000ff 70%,
+    #8b00ff 84%,
+    #ff00ff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: 
+    drop-shadow(2px 2px 0 #000)
+    drop-shadow(4px 4px 0 rgba(255,255,255,0.3))
+    drop-shadow(5px 5px 8px rgba(0,0,0,0.5));
+  transform: perspective(400px) rotateX(-15deg) scale(1.1);
+  letter-spacing: -2px;
+}
+
+/* For subtitle - 3D Purple/Pink */
+.wordart-subtitle {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 20px 0 40px 0;
+  color: #ff00ff;
+  text-shadow: 
+    1px 1px 0 #ff69b4,
+    2px 2px 0 #ff1493,
+    3px 3px 0 #c71585,
+    4px 4px 0 #8b008b,
+    5px 5px 10px rgba(0,0,0,0.6);
+  transform: perspective(600px) rotateY(-5deg);
+  letter-spacing: 2px;
+}
+
+/* Power Screen Specific WordArt */
+.wordart-power-text {
+  font-size: 36px !important;
+  margin-bottom: 40px;
+}
+
+.wordart-hint-text {
+  font-size: 20px !important;
+  margin-top: 40px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .wordart-title {
+    font-size: 48px;
+    transform: perspective(400px) rotateX(-10deg) scale(1);
+  }
+  
+  .wordart-subtitle {
+    font-size: 20px;
+    text-shadow: 
+      1px 1px 0 #ff69b4,
+      2px 2px 0 #ff1493,
+      3px 3px 0 #c71585,
+      4px 4px 8px rgba(0,0,0,0.6);
+  }
+  
+  .wordart-power-text {
+    font-size: 28px !important;
+  }
+  
+  .wordart-hint-text {
+    font-size: 16px !important;
+  }
+}
+
+/* Alternative WordArt styles for rotation */
+.wordart-chrome {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 
+    2px 2px 0 #ff00ff,
+    4px 4px 0 #00ffff,
+    6px 6px 0 #ffff00,
+    8px 8px 10px rgba(0,0,0,0.5),
+    0 0 20px rgba(255,255,255,0.5);
+  transform: perspective(500px) rotateX(-10deg);
+  letter-spacing: 2px;
+}

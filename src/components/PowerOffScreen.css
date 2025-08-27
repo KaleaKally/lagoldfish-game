@@ -1,0 +1,954 @@
+/* Power Off Screen - Full Screen */
+.power-off-screen {
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Aquarium Theme Background - 90s Style */
+.power-off-screen.aquarium-theme {
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      #006494 0px,
+      #006494 2px,
+      #0077aa 2px,
+      #0077aa 4px
+    ),
+    linear-gradient(180deg, 
+      #00ccff 0%, 
+      #0099cc 30%, 
+      #006699 60%, 
+      #003366 100%);
+  background-size: 100% 100%, 100% 100%;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Add subtle scanlines for CRT effect */
+.power-off-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(255, 255, 255, 0.02) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Content wrapper */
+.power-content {
+  text-align: center;
+  z-index: 10; /* Above fish */
+  padding: 30px;
+  position: relative;
+  background: rgba(0, 51, 102, 0.7); /* Semi-transparent dark blue background */
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  width: 90%;
+  max-width: 600px;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.power-text {
+  color: #999;
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Windows 95 Style Power Button */
+.win95-power-button {
+  background: #c0c0c0;
+  border: 3px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  padding: 15px 35px;
+  font-family: 'Tahoma', 'MS Sans Serif', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 
+    2px 2px 0 #000,
+    inset 1px 1px 0 #dfdfdf,
+    inset -1px -1px 0 #808080;
+  transition: all 0.1s;
+  position: relative;
+}
+
+.win95-power-button:hover {
+  background: #d0d0d0;
+}
+
+.win95-power-button:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+  box-shadow: 
+    1px 1px 0 #000,
+    inset 2px 2px 3px rgba(0, 0, 0, 0.3);
+  transform: translate(1px, 1px);
+}
+
+/* Aquarium Theme Button - Simplified */
+.aquarium-button {
+  background: linear-gradient(135deg, #00a8cc 0%, #0077aa 100%);
+  border: 3px solid #ffffff;
+  padding: 12px 25px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 
+    0 0 15px rgba(0, 200, 255, 0.4),
+    0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s;
+  position: relative;
+  z-index: 11;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.aquarium-button:hover {
+  background: linear-gradient(135deg, #00b8dc 0%, #0087ba 100%);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 20px rgba(0, 200, 255, 0.5),
+    0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.aquarium-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 0 10px rgba(0, 200, 255, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Aqua Text Style - Simpler and more legible */
+.aqua-text {
+  font-family: 'Arial Black', 'Tahoma', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 
+    1px 1px 0 rgba(0, 0, 0, 0.3),
+    0 0 8px rgba(255, 255, 255, 0.5);
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Decorative bubbles on button */
+.bubble-decoration {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  opacity: 0;
+  animation: button-bubble 4s infinite;
+}
+
+.bubble-btn-1 {
+  width: 6px;
+  height: 6px;
+  animation-delay: 0s;
+}
+
+.bubble-btn-2 {
+  width: 8px;
+  height: 8px;
+  animation-delay: 1.5s;
+}
+
+.bubble-btn-3 {
+  width: 5px;
+  height: 5px;
+  animation-delay: 3s;
+}
+
+@keyframes button-bubble {
+  0% {
+    opacity: 0;
+    bottom: 10%;
+    left: 20%;
+    transform: scale(0);
+  }
+  20% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    bottom: 90%;
+    left: 80%;
+    transform: scale(0.5);
+  }
+}
+
+/* Windows Flag */
+.win95-flag {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  width: 20px;
+  height: 20px;
+  transform: perspective(50px) rotateY(-10deg);
+}
+
+.flag-square {
+  width: 9px;
+  height: 9px;
+}
+
+.flag-red { background: #ff0000; }
+.flag-green { background: #00ff00; }
+.flag-blue { background: #0000ff; }
+.flag-yellow { background: #ffff00; }
+
+.button-text {
+  color: #000;
+  letter-spacing: 1px;
+}
+
+.hint-text {
+  color: #ffffff;
+  font-size: 14px;
+  margin-top: 40px;
+  font-family: 'Courier New', monospace;
+  animation: blink-text 2s infinite;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 11;
+}
+
+@keyframes blink-text {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Power LED indicator (optional) */
+.power-led {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #222;
+  border-radius: 50%;
+  border: 1px solid #333;
+  box-shadow: 
+    inset 0 0 3px rgba(0, 0, 0, 0.8),
+    0 0 5px rgba(0, 0, 0, 0.5);
+  animation: led-pulse 3s infinite;
+}
+
+@keyframes led-pulse {
+  0%, 100% { 
+    background: #222;
+    box-shadow: 
+      inset 0 0 3px rgba(0, 0, 0, 0.8),
+      0 0 5px rgba(0, 0, 0, 0.5);
+  }
+  50% { 
+    background: #333;
+    box-shadow: 
+      inset 0 0 3px rgba(255, 255, 255, 0.1),
+      0 0 10px rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Aquarium Animations */
+@keyframes water-flow {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+
+/* Intro Text Styling */
+.intro-text {
+  text-align: center;
+  margin-bottom: 30px;
+  z-index: 11;
+  position: relative;
+}
+
+.goldfish-title {
+  color: #ffff00;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-shadow: 
+    3px 3px 0px #ff00ff,
+    -1px -1px 0px #00ffff;
+  animation: float 3s ease-in-out infinite;
+  font-family: 'MS Sans Serif', 'Chicago', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.intro-message {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  font-family: 'Tahoma', 'Arial', sans-serif;
+}
+
+.from-text {
+  color: #add8e6;
+  font-size: 16px;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  font-family: 'Tahoma', 'Arial', sans-serif;
+}
+
+.friend-names {
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Goldfish Images - 90s Style */
+.goldfish {
+  position: absolute;
+  z-index: 2; /* Behind text and button */
+  width: 80px;
+  height: auto;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: pixelated;
+}
+
+.goldfish-1 {
+  top: 15%;
+  left: 20%;
+  animation: swim-right-visible 15s linear, swim-right-continuous 15s linear 15s infinite;
+}
+
+.goldfish-2 {
+  top: 40%;
+  right: 30%;
+  animation: swim-left-visible 18s linear, swim-left-continuous 18s linear 18s infinite;
+  transform: scaleX(-1);
+}
+
+.goldfish-3 {
+  top: 65%;
+  left: 50%;
+  animation: swim-right-visible 20s linear, swim-right-continuous 20s linear 20s infinite;
+}
+
+.goldfish-4 {
+  top: 80%;
+  right: -100px;
+  animation: swim-left 16s linear infinite;
+  animation-delay: 2s;
+  transform: scaleX(-1);
+}
+
+/* Special goldfish - larger and different animation */
+.goldfish-special {
+  width: 100px;
+  top: 25%;
+  left: -120px;
+  animation: swim-special 25s ease-in-out infinite;
+  animation-delay: 1s;
+  filter: drop-shadow(3px 3px 6px rgba(255, 215, 0, 0.4));
+}
+
+/* Additional fish positions and animations - evenly distributed */
+.goldfish-5 {
+  top: 8%;
+  left: 70%;
+  animation: swim-right-visible 12s linear, swim-right-continuous 12s linear 12s infinite;
+}
+
+.goldfish-6 {
+  top: 20%;
+  right: 60%;
+  animation: swim-left-visible 14s linear, swim-left-continuous 14s linear 14s infinite;
+  transform: scaleX(-1);
+}
+
+.goldfish-7 {
+  top: 32%;
+  right: -100px;
+  animation: swim-left 17s linear infinite;
+  animation-delay: 3s;
+  transform: scaleX(-1);
+}
+
+.goldfish-8 {
+  top: 45%;
+  left: 15%;
+  animation: swim-right-visible 13s linear, swim-right-continuous 13s linear 13s infinite;
+}
+
+/* More evenly distributed fish */
+.goldfish-9 {
+  top: 55%;
+  left: -100px;
+  animation: swim-right 11s linear infinite;
+  animation-delay: 4s;
+}
+
+.goldfish-10 {
+  top: 68%;
+  right: 40%;
+  animation: swim-left-visible 15s linear, swim-left-continuous 15s linear 15s infinite;
+  transform: scaleX(-1);
+}
+
+.goldfish-11 {
+  top: 75%;
+  right: -100px;
+  animation: swim-left 13s linear infinite;
+  animation-delay: 5s;
+  transform: scaleX(-1);
+}
+
+.goldfish-12 {
+  top: 12%;
+  left: 80%;
+  animation: swim-right-visible 16s linear, swim-right-continuous 16s linear 16s infinite;
+}
+
+@keyframes swim-right {
+  from { left: -100px; }
+  to { left: calc(100% + 100px); }
+}
+
+@keyframes swim-left {
+  from { right: -100px; }
+  to { right: calc(100% + 100px); }
+}
+
+/* Start fish already on screen for first appearance only */
+@keyframes swim-right-visible {
+  0% { left: 10%; }
+  100% { left: calc(100% + 100px); }
+}
+
+@keyframes swim-left-visible {
+  0% { right: 10%; }
+  100% { right: calc(100% + 100px); }
+}
+
+/* Continuous swimming from edge */
+@keyframes swim-right-continuous {
+  0% { left: -100px; }
+  100% { left: calc(100% + 100px); }
+}
+
+@keyframes swim-left-continuous {
+  0% { right: -100px; }
+  100% { right: calc(100% + 100px); }
+}
+
+@keyframes swim-special {
+  0% { 
+    left: -120px; 
+    top: 25%; 
+    transform: rotate(0deg);
+  }
+  25% { 
+    left: 30%; 
+    top: 20%; 
+    transform: rotate(-5deg);
+  }
+  50% { 
+    left: 60%; 
+    top: 30%; 
+    transform: rotate(5deg);
+  }
+  75% { 
+    left: 40%; 
+    top: 22%; 
+    transform: rotate(-3deg);
+  }
+  100% { 
+    left: calc(100% + 120px); 
+    top: 25%; 
+    transform: rotate(0deg);
+  }
+}
+
+/* Pixelated Bubbles - 90s Style */
+.bubble {
+  position: absolute;
+  background: #ffffff;
+  border: 2px solid #00ccff;
+  border-radius: 50%;
+  opacity: 0.7;
+  z-index: 4;
+  box-shadow: 
+    inset -2px -2px 0 rgba(0, 0, 0, 0.2),
+    inset 2px 2px 0 rgba(255, 255, 255, 0.8);
+}
+
+.bubble-1 {
+  width: 8px;
+  height: 8px;
+  left: 20%;
+  bottom: -20px;
+  animation: bubble-rise 8s linear infinite;
+}
+
+.bubble-2 {
+  width: 12px;
+  height: 12px;
+  left: 40%;
+  bottom: -20px;
+  animation: bubble-rise 10s linear infinite;
+  animation-delay: 2s;
+}
+
+.bubble-3 {
+  width: 6px;
+  height: 6px;
+  left: 60%;
+  bottom: -20px;
+  animation: bubble-rise 7s linear infinite;
+  animation-delay: 4s;
+}
+
+.bubble-4 {
+  width: 10px;
+  height: 10px;
+  left: 80%;
+  bottom: -20px;
+  animation: bubble-rise 9s linear infinite;
+  animation-delay: 1s;
+}
+
+.bubble-5 {
+  width: 7px;
+  height: 7px;
+  left: 30%;
+  bottom: -20px;
+  animation: bubble-rise 11s linear infinite;
+  animation-delay: 3s;
+}
+
+.bubble-6 {
+  width: 9px;
+  height: 9px;
+  left: 50%;
+  bottom: -20px;
+  animation: bubble-rise 8s linear infinite;
+  animation-delay: 5s;
+}
+
+.bubble-7 {
+  width: 5px;
+  height: 5px;
+  left: 15%;
+  bottom: -20px;
+  animation: bubble-rise 12s linear infinite;
+  animation-delay: 6s;
+}
+
+.bubble-8 {
+  width: 11px;
+  height: 11px;
+  left: 70%;
+  bottom: -20px;
+  animation: bubble-rise 9s linear infinite;
+  animation-delay: 2.5s;
+}
+
+.bubble-9 {
+  width: 8px;
+  height: 8px;
+  left: 45%;
+  bottom: -20px;
+  animation: bubble-rise 10s linear infinite;
+  animation-delay: 7s;
+}
+
+.bubble-10 {
+  width: 6px;
+  height: 6px;
+  left: 25%;
+  bottom: -20px;
+  animation: bubble-rise 8s linear infinite;
+  animation-delay: 4.5s;
+}
+
+.bubble-11 {
+  width: 10px;
+  height: 10px;
+  left: 85%;
+  bottom: -20px;
+  animation: bubble-rise 11s linear infinite;
+  animation-delay: 1.5s;
+}
+
+.bubble-12 {
+  width: 7px;
+  height: 7px;
+  left: 55%;
+  bottom: -20px;
+  animation: bubble-rise 9s linear infinite;
+  animation-delay: 5.5s;
+}
+
+@keyframes bubble-rise {
+  0% {
+    bottom: -20px;
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    bottom: 100vh;
+    transform: translateX(0);
+  }
+}
+
+/* CSS Seaweed - Pixelated 90s Style */
+.css-seaweed {
+  position: absolute;
+  bottom: 0;
+  z-index: 3;
+  transform-origin: bottom center;
+  background: linear-gradient(180deg, #00ff00 0%, #008800 100%);
+  border: 2px solid #004400;
+}
+
+.seaweed-1 {
+  left: 10%;
+  width: 20px;
+  height: 80px;
+  animation: sway 4s ease-in-out infinite;
+  clip-path: polygon(
+    40% 0%, 60% 0%,
+    65% 20%, 55% 40%,
+    70% 60%, 50% 80%,
+    100% 100%, 0% 100%,
+    50% 80%, 30% 60%,
+    45% 40%, 35% 20%
+  );
+}
+
+.seaweed-2 {
+  left: 50%;
+  width: 30px;
+  height: 100px;
+  animation: sway 5s ease-in-out infinite;
+  animation-delay: 1s;
+  clip-path: polygon(
+    45% 0%, 55% 0%,
+    60% 25%, 52% 50%,
+    65% 75%, 50% 90%,
+    100% 100%, 0% 100%,
+    50% 90%, 35% 75%,
+    48% 50%, 40% 25%
+  );
+}
+
+.seaweed-3 {
+  left: 85%;
+  width: 25px;
+  height: 70px;
+  animation: sway 3.5s ease-in-out infinite;
+  animation-delay: 2s;
+  clip-path: polygon(
+    42% 0%, 58% 0%,
+    62% 30%, 54% 55%,
+    68% 80%, 50% 95%,
+    100% 100%, 0% 100%,
+    50% 95%, 32% 80%,
+    46% 55%, 38% 30%
+  );
+}
+
+.seaweed-4 {
+  left: 30%;
+  width: 22px;
+  height: 90px;
+  animation: sway 4.5s ease-in-out infinite;
+  animation-delay: 0.5s;
+  background: linear-gradient(180deg, #00cc00 0%, #006600 100%);
+  clip-path: polygon(
+    43% 0%, 57% 0%,
+    61% 22%, 53% 45%,
+    66% 70%, 50% 85%,
+    100% 100%, 0% 100%,
+    50% 85%, 34% 70%,
+    47% 45%, 39% 22%
+  );
+}
+
+.seaweed-5 {
+  left: 65%;
+  width: 18px;
+  height: 75px;
+  animation: sway 3.8s ease-in-out infinite;
+  animation-delay: 3s;
+  background: linear-gradient(180deg, #00ff00 0%, #009900 100%);
+  clip-path: polygon(
+    44% 0%, 56% 0%,
+    59% 28%, 51% 52%,
+    64% 76%, 50% 92%,
+    100% 100%, 0% 100%,
+    50% 92%, 36% 76%,
+    49% 52%, 41% 28%
+  );
+}
+
+.seaweed-6 {
+  left: 5%;
+  width: 24px;
+  height: 65px;
+  animation: sway 5.2s ease-in-out infinite;
+  animation-delay: 1.8s;
+  background: linear-gradient(180deg, #00dd00 0%, #007700 100%);
+  clip-path: polygon(
+    41% 0%, 59% 0%,
+    63% 26%, 55% 48%,
+    69% 72%, 50% 88%,
+    100% 100%, 0% 100%,
+    50% 88%, 31% 72%,
+    45% 48%, 37% 26%
+  );
+}
+
+.seaweed-7 {
+  left: 95%;
+  width: 20px;
+  height: 85px;
+  animation: sway 4.2s ease-in-out infinite;
+  animation-delay: 2.5s;
+  background: linear-gradient(180deg, #00ee00 0%, #008800 100%);
+  clip-path: polygon(
+    46% 0%, 54% 0%,
+    58% 24%, 50% 46%,
+    63% 68%, 50% 84%,
+    100% 100%, 0% 100%,
+    50% 84%, 37% 68%,
+    50% 46%, 42% 24%
+  );
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .power-content {
+    padding: 25px 20px;
+    margin: 15px auto;
+    width: 85%;
+    max-width: 400px;
+    min-height: auto;
+  }
+  
+  .goldfish-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .intro-message {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  .from-text {
+    font-size: 17px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  .friend-names {
+    font-size: 18px;
+    display: block;
+    margin-top: 8px;
+  }
+  
+  .win95-wordart-button {
+    padding: 10px 15px;
+    gap: 10px;
+  }
+  
+  .wordart-button-text {
+    font-size: 16px !important;
+  }
+  
+  .win95-flag {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .flag-square {
+    width: 7px;
+    height: 7px;
+  }
+  
+  .hint-text {
+    font-size: 11px;
+    margin-top: 20px;
+  }
+  
+  /* Smaller fish on mobile */
+  .goldfish {
+    width: 50px;
+  }
+  
+  .goldfish-special {
+    width: 60px;
+  }
+  
+  /* Adjust fish swimming area for mobile */
+  .goldfish-1 { top: 10%; }
+  .goldfish-2 { top: 25%; }
+  .goldfish-3 { top: 75%; }
+  .goldfish-4 { top: 85%; }
+  .goldfish-5 { top: 45%; }
+  .goldfish-6 { top: 30%; }
+  .goldfish-7 { top: 60%; }
+  .goldfish-8 { top: 5%; }
+  
+  /* Smaller seaweed on mobile */
+  .css-seaweed {
+    transform: scale(0.6);
+  }
+  
+  .seaweed-1 {
+    left: 5%;
+    height: 60px;
+  }
+  
+  .seaweed-2 {
+    left: 50%;
+    height: 70px;
+  }
+  
+  .seaweed-3 {
+    left: 90%;
+    height: 50px;
+  }
+  
+  /* Smaller bubbles on mobile */
+  .bubble-1 { width: 6px; height: 6px; }
+  .bubble-2 { width: 8px; height: 8px; }
+  .bubble-3 { width: 5px; height: 5px; }
+  .bubble-4 { width: 7px; height: 7px; }
+  .bubble-5 { width: 6px; height: 6px; }
+  .bubble-6 { width: 7px; height: 7px; }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .power-content {
+    padding: 20px 15px;
+    margin: 10px auto;
+    width: 90%;
+    max-width: 350px;
+    min-height: auto;
+    border-radius: 15px;
+  }
+  
+  .goldfish-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  
+  .intro-message {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  
+  .from-text {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .friend-names {
+    font-size: 16px;
+  }
+  
+  .wordart-button-text {
+    font-size: 14px !important;
+  }
+  
+  .goldfish {
+    width: 40px;
+  }
+  
+  .goldfish-special {
+    width: 45px;
+  }
+}
+
+/* Landscape orientation mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .power-off-screen {
+    padding-top: 5vh;
+  }
+  
+  .power-content {
+    padding: 15px 25px;
+    width: 80%;
+    max-width: 500px;
+    margin: 10px auto;
+  }
+  
+  .goldfish-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .intro-message {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  
+  .from-text {
+    font-size: 11px;
+    margin-bottom: 15px;
+  }
+  
+  .hint-text {
+    margin-top: 15px;
+  }
+}

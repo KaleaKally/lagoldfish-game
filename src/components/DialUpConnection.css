@@ -1,0 +1,212 @@
+/* Dial-up Window */
+.dialup-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #0a0a0a #0a0a0a #ffffff;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Window Title Bar */
+.window-titlebar {
+  background: linear-gradient(to right, #000080, #1084d0);
+  color: white;
+  padding: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.window-title {
+  padding-left: 5px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.window-btn {
+  width: 18px;
+  height: 18px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #0a0a0a #0a0a0a #ffffff;
+  font-size: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.window-btn:active {
+  border-color: #0a0a0a #ffffff #ffffff #0a0a0a;
+}
+
+.window-btn.close {
+  font-weight: bold;
+}
+
+/* Window Content */
+.window-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.dialup-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.window-content h3 {
+  margin: 10px 0;
+  font-size: 16px;
+  font-family: 'Tahoma', sans-serif;
+}
+
+.window-content p {
+  margin: 10px 0;
+  font-size: 12px;
+  color: #000;
+}
+
+/* Connection Form */
+.connection-form {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.form-group label {
+  width: 80px;
+  font-size: 12px;
+}
+
+.form-group input {
+  flex: 1;
+  padding: 3px;
+  border: 2px solid;
+  border-color: #0a0a0a #ffffff #ffffff #0a0a0a;
+  background: white;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+}
+
+/* Connect Button */
+.connect-btn {
+  padding: 5px 20px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #0a0a0a #0a0a0a #ffffff;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: 'Tahoma', sans-serif;
+}
+
+.connect-btn:active {
+  border-color: #0a0a0a #ffffff #ffffff #0a0a0a;
+  background: #b0b0b0;
+}
+
+/* Connection Status */
+.connection-status {
+  margin: 20px 0;
+}
+
+.connection-status p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #000080;
+  font-weight: bold;
+}
+
+/* Modem Animation */
+.modem-animation {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.modem-light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #808080;
+  animation: blink-modem 0.5s infinite alternate;
+}
+
+.modem-light:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.modem-light:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.modem-light:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink-modem {
+  from {
+    background: #808080;
+  }
+  to {
+    background: #00ff00;
+    box-shadow: 0 0 5px #00ff00;
+  }
+}
+
+/* Progress Bar */
+.dialup-progress {
+  width: 100%;
+  height: 20px;
+  background: #000;
+  border: 2px solid;
+  border-color: #0a0a0a #ffffff #ffffff #0a0a0a;
+  margin: 15px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #000080,
+    #000080 8px,
+    #1084d0 8px,
+    #1084d0 16px
+  );
+  transition: width 0.5s linear;
+}
+
+.speed-text {
+  font-size: 11px;
+  color: #808080;
+  font-family: 'Courier New', monospace;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .dialup-window {
+    width: 95%;
+  }
+  
+  .dialup-icon {
+    font-size: 36px;
+  }
+}

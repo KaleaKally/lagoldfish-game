@@ -1,0 +1,483 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Windows 95 Colors */
+:root {
+  --win95-teal: #008080;
+  --win95-gray: #c0c0c0;
+  --win95-dark-gray: #808080;
+  --win95-light-gray: #dfdfdf;
+  --win95-white: #ffffff;
+  --win95-black: #000000;
+  --win95-blue: #000080;
+  --win95-title-blue: #010081;
+  --win95-title-gradient-light: #1084d0;
+}
+
+/* Windows 95 Font */
+@font-face {
+  font-family: 'MS Sans Serif';
+  src: url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+}
+
+body {
+  font-family: 'Courier New', 'MS Sans Serif', monospace;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Boot Screen Container */
+.boot-screen {
+  width: 100%;
+  height: 100vh;
+  background: var(--win95-black);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  color: var(--win95-white);
+  padding: 20px;
+  padding-top: 30vh;
+}
+
+/* 90s Start Screen - Memphis Style */
+.start-screen-90s {
+  width: 100%;
+  height: 100vh;
+  background: #FFE5EC;  /* Soft pink base like vintage toys */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* Memphis geometric background */
+.memphis-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    /* Diagonal stripes */
+    repeating-linear-gradient(
+      45deg,
+      #FFB6C1 0,
+      #FFB6C1 20px,
+      transparent 20px,
+      transparent 40px,
+      #87CEEB 40px,
+      #87CEEB 60px,
+      transparent 60px,
+      transparent 80px
+    ),
+    /* Dots pattern */
+    radial-gradient(circle at 20% 80%, #FFD700 15px, transparent 15px),
+    radial-gradient(circle at 80% 20%, #FF69B4 20px, transparent 20px),
+    radial-gradient(circle at 65% 65%, #00CED1 25px, transparent 25px),
+    radial-gradient(circle at 35% 35%, #FFA500 18px, transparent 18px);
+  opacity: 0.3;
+}
+
+/* Zigzag and squiggle patterns */
+.zigzag-pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Memphis shapes scattered around */
+.zigzag-pattern::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 80px;
+  height: 80px;
+  background: #FF1493;
+  transform: rotate(45deg);
+  opacity: 0.6;
+}
+
+.zigzag-pattern::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+  border: 15px solid #00FA9A;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+/* 90s Title Container - Memphis Style */
+.title-container-90s {
+  background: #FFFFFF;
+  padding: 30px 40px;
+  margin-bottom: 30px;
+  z-index: 50;
+  position: relative;
+  border: 6px solid #000;
+  box-shadow: 
+    10px 10px 0 #FF69B4,
+    10px 10px 0 #000 inset;
+  transform: rotate(-3deg);
+}
+
+.title-90s {
+  font-size: 64px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  letter-spacing: -2px;
+  margin: 0;
+  color: #FF1493;
+  text-shadow: 
+    4px 4px 0 #00CED1,
+    8px 8px 0 #FFD700;
+  line-height: 0.9;
+}
+
+.subtitle-90s {
+  background: #FFD700;
+  color: #000;
+  font-size: 22px;
+  padding: 12px 25px;
+  margin-bottom: 40px;
+  font-family: 'Arial Black', sans-serif;
+  font-weight: bold;
+  border: 4px solid #000;
+  box-shadow: 
+    6px 6px 0 #00CED1,
+    12px 12px 0 #FF69B4;
+  transform: rotate(2deg);
+  z-index: 50;
+  display: inline-block;
+  position: relative;
+}
+
+/* 90s Power Button */
+.power-button-90s {
+  background: #7209B7;  /* Purple */
+  color: #FFE66D;  /* Yellow text */
+  padding: 20px 40px;
+  border: 4px solid #000;
+  font-size: 24px;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  z-index: 50;
+  box-shadow: 
+    8px 8px 0 #000,
+    16px 16px 0 #00D9FF;
+  transition: all 0.1s;
+  font-family: 'Arial Black', sans-serif;
+  letter-spacing: 2px;
+  transform: rotate(-1deg);
+}
+
+.power-button-90s:hover {
+  transform: rotate(-1deg) translate(-4px, -4px);
+  box-shadow: 
+    12px 12px 0 #000,
+    20px 20px 0 #00D9FF;
+}
+
+.power-button-90s:active {
+  transform: rotate(-1deg) translate(4px, 4px);
+  box-shadow: 
+    4px 4px 0 #000,
+    8px 8px 0 #00D9FF;
+}
+
+/* 90s Icons and Items */
+.nineties-items {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1; /* Keep in background */
+}
+
+.nineties-icon {
+  position: absolute;
+  font-size: 60px;
+  filter: drop-shadow(3px 3px 0 #000);
+  animation: gentle-float 6s ease-in-out infinite;
+}
+
+.nineties-icon.small {
+  font-size: 40px;
+}
+
+.nineties-icon.large {
+  font-size: 80px;
+}
+
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+.nineties-icon:nth-child(odd) {
+  animation-duration: 7s;
+  animation-delay: 0.5s;
+}
+
+.nineties-icon:nth-child(even) {
+  animation-duration: 5s;
+  animation-direction: reverse;
+}
+
+.squiggle {
+  position: absolute;
+  font-size: 100px;
+  color: #000;
+  font-weight: 900;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+/* Old Power Button - keeping for backup */
+.power-button {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #e0e0e0 0%, #a0a0a0 100%);
+  border: 4px solid #808080;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 
+    inset 2px 2px 5px rgba(255,255,255,0.5),
+    inset -2px -2px 5px rgba(0,0,0,0.5),
+    5px 5px 15px rgba(0,0,0,0.3);
+  transition: all 0.1s;
+}
+
+.power-button:active {
+  transform: scale(0.95);
+  box-shadow: 
+    inset 2px 2px 5px rgba(0,0,0,0.5),
+    inset -2px -2px 5px rgba(255,255,255,0.5);
+}
+
+.power-symbol {
+  font-size: 60px;
+  color: #505050;
+  font-weight: bold;
+}
+
+/* Loading Screen */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.windows-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.windows-flag {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3px;
+  transform: perspective(100px) rotateY(-15deg);
+}
+
+.flag-piece {
+  border-radius: 1px;
+}
+
+.flag-piece:nth-child(1) { background: #f25022; }
+.flag-piece:nth-child(2) { background: #7fba00; }
+.flag-piece:nth-child(3) { background: #00a4ef; }
+.flag-piece:nth-child(4) { background: #ffb900; }
+
+.windows-text {
+  font-size: 42px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Loading Messages */
+.loading-message {
+  font-size: 16px;
+  color: #c0c0c0;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  min-height: 24px;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+  width: 100%;
+  height: 25px;
+  background: #000;
+  border: 2px solid #c0c0c0;
+  border-style: inset;
+  padding: 3px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #000080,
+    #000080 8px,
+    #1084d0 8px,
+    #1084d0 16px
+  );
+  transition: width 0.3s linear;
+}
+
+/* Blinking Cursor */
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 18px;
+  background: #c0c0c0;
+  animation: blink 1s infinite;
+  margin-left: 3px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .windows-text {
+    font-size: 32px;
+  }
+  
+  .loading-message {
+    font-size: 14px;
+  }
+  
+  .power-button {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .power-symbol {
+    font-size: 50px;
+  }
+  
+  .windows-flag {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .title-container-90s {
+    padding: 20px 25px;
+    margin-bottom: 30px; /* Increased spacing */
+    transform: rotate(-2deg);
+    box-shadow: 
+      6px 6px 0 #FF69B4,
+      6px 6px 0 #000 inset;
+  }
+  
+  .title-90s {
+    font-size: 36px;
+    letter-spacing: -1px;
+    text-shadow: 
+      2px 2px 0 #00CED1,
+      4px 4px 0 #FFD700;
+  }
+  
+  .subtitle-90s {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin-bottom: 35px; /* Increased spacing */
+    margin-top: 10px; /* Add more space from title */
+    box-shadow: 
+      4px 4px 0 #00CED1,
+      8px 8px 0 #FF69B4;
+  }
+  
+  .power-button-90s {
+    font-size: 18px;
+    padding: 15px 25px;
+  }
+  
+  .nineties-icon-wrapper {
+    transform: scale(0.8);
+  }
+  
+  .vhs-tape, .floppy-disk, .cd-disc, 
+  .game-controller, .boombox, .crt-tv, 
+  .cassette, .tamagotchi {
+    transform: scale(0.8);
+  }
+}
+
+/* Scanline Effect */
+.scanlines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+/* CRT Effect */
+.crt-effect {
+  position: relative;
+}
+
+.crt-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  pointer-events: none;
+}
