@@ -847,6 +847,41 @@
   .goldfish-7 { top: 60%; }
   .goldfish-8 { top: 5%; }
   
+  /* Make seaweed visible on mobile */
+  .css-seaweed {
+    height: 60px;
+    z-index: 1;
+  }
+  
+  .seaweed-1 { 
+    left: 5%;
+    height: 50px;
+  }
+  .seaweed-2 { 
+    left: 20%;
+    height: 70px;
+  }
+  .seaweed-3 { 
+    left: 40%;
+    height: 45px;
+  }
+  .seaweed-4 { 
+    left: 60%;
+    height: 55px;
+  }
+  .seaweed-5 { 
+    left: 75%;
+    height: 65px;
+  }
+  .seaweed-6 { 
+    left: 85%;
+    height: 50px;
+  }
+  .seaweed-7 { 
+    left: 92%;
+    height: 60px;
+  }
+  
   /* Smaller seaweed on mobile */
   .css-seaweed {
     transform: scale(0.6);

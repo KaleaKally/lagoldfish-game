@@ -85,7 +85,7 @@ const SnakeGame = ({ onWin, onBack, targetScore = 100 }: SnakeGameProps) => {
       // Check if food eaten
       if (head.x === food.x && head.y === food.y) {
         setScore(prevScore => {
-          const newScore = prevScore + 10;
+          const newScore = prevScore + 20;
           if (newScore >= targetScore) {
             setGameWon(true);
             setTimeout(onWin, 1500);
