@@ -9,6 +9,7 @@ interface SnakeGameProps {
 
 const GRID_SIZE = 15;
 const CELL_SIZE = 20;
+const CELL_SIZE_MOBILE = 18.67; // 280px / 15 cells = 18.67px
 const INITIAL_SPEED = 200;
 const SPEED_INCREMENT = 5;
 
@@ -235,15 +236,19 @@ const SnakeGame = ({ onWin, onBack, targetScore = 100 }: SnakeGameProps) => {
                                food.x >= 0 && food.x < GRID_SIZE && 
                                food.y >= 0 && food.y < GRID_SIZE;
 
+                // Use responsive cell size
+                const isMobile = window.innerWidth <= 768;
+                const cellSize = isMobile ? CELL_SIZE_MOBILE : CELL_SIZE;
+                
                 return (
                   <div
                     key={`${x}-${y}`}
                     className={`cell ${isSnakeHead ? 'snake-head' : ''} ${isSnakeBody ? 'snake-body' : ''} ${isFood ? 'food' : ''}`}
                     style={{
-                      left: `${x * CELL_SIZE}px`,
-                      top: `${y * CELL_SIZE}px`,
-                      width: `${CELL_SIZE}px`,
-                      height: `${CELL_SIZE}px`
+                      left: `${x * cellSize}px`,
+                      top: `${y * cellSize}px`,
+                      width: `${cellSize}px`,
+                      height: `${cellSize}px`
                     }}
                   />
                 );
