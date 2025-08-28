@@ -35,14 +35,25 @@ const SnakeGame = ({ onWin, onBack, targetScore = 100 }: SnakeGameProps) => {
 
   const generateFood = useCallback((currentSnake: Position[]): Position => {
     let newFood: Position;
+    let attempts = 0;
+    const maxAttempts = GRID_SIZE * GRID_SIZE;
+    
     do {
       newFood = {
         x: Math.floor(Math.random() * GRID_SIZE),
         y: Math.floor(Math.random() * GRID_SIZE)
       };
+      attempts++;
+      
+      // Safety check to prevent infinite loop
+      if (attempts > maxAttempts) {
+        console.error('Could not find empty space for food!');
+        // Return a fallback position (might overlap with snake)
+        return { x: 0, y: 0 };
+      }
     } while (currentSnake.some(segment => segment.x === newFood.x && segment.y === newFood.y));
     
-    // setCurrentFoodEmoji(foodEmojis[Math.floor(Math.random() * foodEmojis.length)]);
+    console.log('Food generated at:', newFood.x, newFood.y);
     return newFood;
   }, []);
 
@@ -176,6 +187,11 @@ const SnakeGame = ({ onWin, onBack, targetScore = 100 }: SnakeGameProps) => {
     };
   }, [moveSnake, speed]);
 
+  // Debug food position
+  useEffect(() => {
+    console.log('Food position updated to:', food.x, food.y, 'Valid:', food.x >= 0 && food.x < GRID_SIZE && food.y >= 0 && food.y < GRID_SIZE);
+  }, [food]);
+
   const resetGame = () => {
     setSnake([{ x: 7, y: 7 }]);
     setFood({ x: 10, y: 10 });
@@ -215,7 +231,9 @@ const SnakeGame = ({ onWin, onBack, targetScore = 100 }: SnakeGameProps) => {
               Array.from({ length: GRID_SIZE }, (_, x) => {
                 const isSnakeHead = snake[0].x === x && snake[0].y === y;
                 const isSnakeBody = snake.slice(1).some(segment => segment.x === x && segment.y === y);
-                const isFood = food.x === x && food.y === y;
+                const isFood = food.x === x && food.y === y && 
+                               food.x >= 0 && food.x < GRID_SIZE && 
+                               food.y >= 0 && food.y < GRID_SIZE;
 
                 return (
                   <div
