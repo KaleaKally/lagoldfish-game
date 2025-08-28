@@ -33,18 +33,18 @@ const SnakeGame = ({ onWin, onBack, targetScore = 100 }: SnakeGameProps) => {
   // const foodEmojis = ['🎂', '🎁', '🎈', '🍰', '🎉', '🎊', '💝', '🎀'];
   // const [currentFoodEmoji, setCurrentFoodEmoji] = useState('🎂');
 
-  const generateFood = useCallback((): Position => {
+  const generateFood = useCallback((currentSnake: Position[]): Position => {
     let newFood: Position;
     do {
       newFood = {
         x: Math.floor(Math.random() * GRID_SIZE),
         y: Math.floor(Math.random() * GRID_SIZE)
       };
-    } while (snake.some(segment => segment.x === newFood.x && segment.y === newFood.y));
+    } while (currentSnake.some(segment => segment.x === newFood.x && segment.y === newFood.y));
     
     // setCurrentFoodEmoji(foodEmojis[Math.floor(Math.random() * foodEmojis.length)]);
     return newFood;
-  }, [snake]);
+  }, []);
 
   const moveSnake = useCallback(() => {
     if (gameOver || gameWon || isPaused) return;
@@ -92,7 +92,7 @@ const SnakeGame = ({ onWin, onBack, targetScore = 100 }: SnakeGameProps) => {
           }
           return newScore;
         });
-        setFood(generateFood());
+        setFood(generateFood(newSnake));
         setSpeed(prev => Math.max(50, prev - SPEED_INCREMENT));
         playEatSound();
       } else {
